@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STEP UP — Your Future Starts Here</title>
+<meta name="description" content="النادي العلمي STEP UP - علوم الحاسوب وريادة الأعمال">
+<meta name="theme-color" content="#04060c">
+<meta property="og:title" content="STEP UP — Your Future Starts Here">
+<meta property="og:description" content="Computer Science & Entrepreneurship · نادي علوم الحاسوب وريادة الأعمال · Souk Ahras">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2305070d'/%3E%3Cpath d='M14 30 32 12 50 30' stroke='%232f7bff' stroke-width='6' fill='none' stroke-linecap='round'/%3E%3Cpath d='M14 44 32 26 50 44' stroke='%235aa2ff' stroke-width='6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Tajawal:wght@400;500;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#04060c;
+    --surface:#0a1020;
+    --blue:#2f7bff;
+    --blue-2:#5aa2ff;
+    --cyan:#37c6ff;
+    --violet:#7a4dff;
+    --green:#2ee6a8;
+    --gold:#ffb020;
+    --magenta:#ff4d8d;
+    --red:#ff5c5c;
+    --text:#eaf2ff;
+    --muted:#9fb3d1;
+    --glass:rgba(255,255,255,.06);
+    --border:rgba(120,170,255,.28);
+    --font-display:"Space Grotesk","Tajawal",system-ui,sans-serif;
+    --font-ar:"Tajawal","Space Grotesk",system-ui,sans-serif;
+    --font-mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scrollbar-width:thin;scrollbar-color:var(--blue) #060a14}
+  html,body{min-height:100%}
+  body{
+    font-family:var(--font-ar);
+    background:var(--bg);color:var(--text);
+    display:grid;place-items:center;
+    padding:40px 16px;overflow-x:hidden;position:relative;
+  }
+  ::selection{background:rgba(47,123,255,.45);color:#fff}
+  ::-webkit-scrollbar{width:10px}
+  ::-webkit-scrollbar-track{background:#060a14}
+  ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--blue),var(--violet));border-radius:8px;border:2px solid #060a14}
+  ::-webkit-scrollbar-thumb:hover{background:linear-gradient(180deg,var(--cyan),var(--blue))}
+  :focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:6px}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+  .bg{position:fixed;inset:-60px;z-index:-3;overflow:hidden;will-change:transform}
+  .bg i{position:absolute;border-radius:50%;filter:blur(95px);opacity:.5;animation:drift 14s ease-in-out infinite alternate}
+  .bg .b1{width:440px;height:440px;background:#123a8a;top:-140px;left:-140px}
+  .bg .b2{width:400px;height:400px;background:#3a1d7a;bottom:-160px;right:-130px;animation-delay:3s}
+  .bg .b3{width:300px;height:300px;background:#0b6a8f;top:38%;left:56%;opacity:.35;animation-delay:6s}
+  @keyframes drift{from{transform:translateY(0) scale(1)}to{transform:translateY(46px) scale(1.1)}}
+  .grid{
+    position:fixed;inset:0;z-index:-2;opacity:.5;
+    background-image:
+      linear-gradient(rgba(90,162,255,.07) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(90,162,255,.07) 1px,transparent 1px);
+    background-size:44px 44px;
+    -webkit-mask-image:radial-gradient(ellipse at center,#000 30%,transparent 78%);
+            mask-image:radial-gradient(ellipse at center,#000 30%,transparent 78%);
+  }
+  .circuit{position:fixed;inset:0;z-index:-2;width:100%;height:100%;opacity:.35;pointer-events:none;will-change:transform}
+  .grain{
+    position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.06;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix type='saturate' values='0'/></filter><rect width='160' height='160' filter='url(%23n)' opacity='0.6'/></svg>");
+  }
+
+  .wrap{width:min(520px,100%);display:flex;flex-direction:column;gap:14px}
+
+  .card{
+    width:100%;
+    padding:32px 24px 24px;
+    border-radius:30px;
+    background:linear-gradient(180deg,rgba(12,18,34,.78),rgba(6,10,20,.72));
+    -webkit-backdrop-filter:blur(20px) saturate(140%);
+            backdrop-filter:blur(20px) saturate(140%);
+    border:1px solid var(--border);
+    box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 1px rgba(47,123,255,.08),0 0 60px rgba(47,123,255,.12);
+    text-align:center;
+  }
+
+  .avatar{position:relative;width:104px;height:104px;margin:0 auto 16px}
+  .avatar .ring{
+    position:absolute;inset:0;border-radius:50%;padding:3px;
+    background:conic-gradient(from 210deg,var(--blue),var(--cyan),var(--violet),var(--blue));
+    -webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 4px),#000 0);
+            mask:radial-gradient(farthest-side,transparent calc(100% - 4px),#000 0);
+    animation:spin 6s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .avatar .inner{
+    position:absolute;inset:6px;border-radius:50%;
+    background:radial-gradient(circle at 30% 25%,#0d1830,#05070d 70%);
+    display:grid;place-items:center;
+    box-shadow:inset 0 0 20px rgba(47,123,255,.25);
+  }
+  .avatar svg{width:52px;height:52px;filter:drop-shadow(0 0 10px rgba(47,123,255,.8))}
+  .badge{position:absolute;right:-2px;bottom:-2px;width:30px;height:30px;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))}
+
+  h1{font-family:var(--font-display);font-size:2.4rem;font-weight:700;letter-spacing:1px}
+  h1 .up{color:var(--blue-2);text-shadow:0 0 18px rgba(47,123,255,.6)}
+  h1 .arrow{color:var(--cyan);font-size:1.4rem;vertical-align:top}
+
+  .tagline{margin-top:8px;height:1.6em;font-size:.84rem;letter-spacing:3px;color:var(--muted);text-transform:uppercase;font-family:var(--font-display)}
+  #type{font-weight:500}
+  #type b{color:var(--blue-2)}
+  #type.ar{font-family:var(--font-ar);letter-spacing:0;text-transform:none;font-size:1rem;font-weight:700;color:var(--cyan)}
+  #type::after{content:"▍";color:var(--cyan);animation:blink 1s steps(1) infinite;margin-left:2px}
+
+  .pill{
+    display:inline-flex;flex-direction:column;align-items:center;gap:5px;
+    margin:14px auto 0;padding:10px 18px;border-radius:18px;
+    background:var(--glass);border:1px solid var(--border);
+    color:var(--muted);max-width:100%;
+  }
+  .pill .en{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:600;letter-spacing:.4px;font-family:var(--font-display)}
+  .pill .en svg{width:15px;height:15px;color:var(--cyan);flex-shrink:0}
+  .pill .ar{font-size:.78rem}
+
+  .stats{margin:24px 0 4px}
+  .stats-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .stats-head i{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--border))}
+  .stats-head i:last-child{background:linear-gradient(90deg,var(--border),transparent)}
+  .stats-head span{font-family:var(--font-display);font-size:.68rem;font-weight:700;letter-spacing:2.5px;color:var(--blue-2)}
+  .stats-head .ar-h{font-family:var(--font-ar);letter-spacing:0;color:var(--muted);font-size:.75rem}
+  .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .stat{
+    --acc:var(--cyan);
+    padding:16px 10px 14px;border-radius:18px;text-align:center;
+    background:var(--glass);border:1px solid var(--border);
+    transition:.3s;position:relative;overflow:hidden;
+  }
+  .stat::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% -20%,color-mix(in srgb,var(--acc) 22%,transparent),transparent 70%);opacity:.7;pointer-events:none}
+  .stat:hover{transform:translateY(-4px);border-color:var(--acc);box-shadow:0 12px 30px color-mix(in srgb,var(--acc) 28%,transparent)}
+  .stat .s-ico{width:34px;height:34px;margin:0 auto 8px;border-radius:11px;display:grid;place-items:center;background:color-mix(in srgb,var(--acc) 14%,transparent);border:1px solid color-mix(in srgb,var(--acc) 40%,transparent)}
+  .stat .s-ico svg{width:17px;height:17px;color:var(--acc)}
+  .stat .num{display:block;font-family:var(--font-display);font-size:1.9rem;font-weight:700;line-height:1;color:var(--acc);text-shadow:0 0 16px color-mix(in srgb,var(--acc) 55%,transparent)}
+  .stat .en{display:block;margin-top:6px;font-family:var(--font-display);font-size:.66rem;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--text)}
+  .stat .ar{display:block;margin-top:2px;font-size:.74rem;color:var(--muted)}
+  .stat.cyan{--acc:var(--cyan)} .stat.blue{--acc:var(--blue-2)} .stat.violet{--acc:#a98bff} .stat.gold{--acc:var(--gold)}
+  .stat.gold{border-color:rgba(255,176,32,.4)}
+  .stat.gold .num::after{content:" 🏆";font-size:1rem;text-shadow:none}
+
+  .socials{display:flex;justify-content:center;gap:14px;margin:22px 0 24px}
+  .socials a{
+    width:46px;height:46px;border-radius:50%;
+    display:grid;place-items:center;
+    background:var(--glass);border:1px solid var(--border);
+    color:var(--text);transition:.3s;
+  }
+  .socials a:hover{transform:translateY(-4px);border-color:var(--blue);box-shadow:0 8px 24px rgba(47,123,255,.35);color:var(--blue-2)}
+  .socials svg{width:21px;height:21px}
+
+  .links{display:flex;flex-direction:column;gap:13px;text-align:left}
+  .link{
+    display:flex;align-items:center;gap:14px;
+    padding:13px 16px;border-radius:18px;
+    background:var(--glass);border:1px solid var(--border);
+    color:var(--text);text-decoration:none;transition:.28s;
+    position:relative;overflow:hidden;
+  }
+  .link::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(120deg,transparent 30%,rgba(90,162,255,.18) 50%,transparent 70%);
+    transform:translateX(-100%);transition:.6s;
+  }
+  .link:hover{transform:translateY(-3px);border-color:rgba(90,162,255,.6);box-shadow:0 12px 30px rgba(47,123,255,.25)}
+  .link:hover::after{transform:translateX(100%)}
+  .ico{
+    width:46px;height:46px;border-radius:14px;flex-shrink:0;
+    display:grid;place-items:center;
+    background:rgba(47,123,255,.14);border:1px solid rgba(47,123,255,.3);
+  }
+  .ico svg{width:22px;height:22px}
+  .link.fb .ico{background:rgba(24,119,242,.15);border-color:rgba(24,119,242,.4)} .link.fb .ico svg{color:#4895ff}
+  .link.ig .ico{background:rgba(225,48,108,.13);border-color:rgba(225,48,108,.4)} .link.ig .ico svg{color:var(--magenta)}
+  .link.tg .ico{background:rgba(38,166,231,.13);border-color:rgba(38,166,231,.4)} .link.tg .ico svg{color:#3ec1ff}
+  .link.ad .ico{background:rgba(122,77,255,.14);border-color:rgba(122,77,255,.4)} .link.ad .ico svg{color:#a98bff}
+
+  .link.join{
+    background:linear-gradient(135deg,var(--blue),#4b5bff 45%,var(--violet));
+    border-color:rgba(140,190,255,.65);
+    animation:pulse 2.6s ease-in-out infinite;
+  }
+  .link.join .txt b{color:#fff}
+  .link.join .txt span{color:#dbe9ff}
+  .link.join .ico{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.4)}
+  .link.join .ico svg{color:#fff}
+  .link.join .go{color:#fff}
+  @keyframes pulse{
+    0%,100%{box-shadow:0 10px 30px rgba(47,123,255,.35)}
+    50%{box-shadow:0 10px 46px rgba(122,77,255,.65)}
+  }
+
+  .txt b{display:block;font-size:1rem;font-weight:700;font-family:var(--font-display)}
+  .txt span{display:block;font-size:.78rem;color:var(--muted);margin-top:2px}
+  .go{margin-left:auto;color:var(--blue-2);font-size:1.2rem;transition:.28s}
+  .link:hover .go{transform:translateX(4px)}
+
+  footer{margin-top:26px;padding-top:18px;border-top:1px dashed var(--border)}
+  footer .hash{font-family:var(--font-display);font-weight:700;letter-spacing:2px;font-size:1rem}
+  footer .hash span{color:var(--blue-2)}
+  footer small{display:block;margin-top:8px;color:var(--muted);font-size:.72rem}
+
+  body.js .reveal{opacity:0;transform:translateY(16px);transition:.6s ease}
+  body.js .reveal.show{opacity:1;transform:none}
+
+  @media (max-width:380px){
+    h1{font-size:2rem}
+    .stat .num{font-size:1.6rem}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  }
+</style>
+</head>
+<body>
+<script>document.body.classList.add('js');</script>
+
+  <div class="bg" id="bg"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+  <div class="grid"></div>
+  <svg class="circuit" id="circuit" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" fill="none" stroke="#3a6ea5" stroke-width="1.4">
+    <path d="M0 120 H220 V60 H420"/><circle cx="420" cy="60" r="4"/>
+    <path d="M1200 180 H980 V260 H820"/><circle cx="820" cy="260" r="4"/>
+    <path d="M0 640 H160 V700 H360"/><circle cx="360" cy="700" r="4"/>
+    <path d="M1200 600 H1020 V660 H880"/><circle cx="880" cy="660" r="4"/>
+    <path d="M60 800 V620 H140"/><path d="M1140 0 V160 H1060"/>
+  </svg>
+  <div class="grain"></div>
+
+  <div class="wrap">
+
+    <main class="card">
+
+      <div class="avatar reveal">
+        <div class="ring"></div>
+        <div class="inner">
+          <svg viewBox="0 0 64 64" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 26 32 8 50 26" stroke="#2f7bff" stroke-width="6"/>
+            <path d="M14 40 32 22 50 40" stroke="#5aa2ff" stroke-width="6"/>
+            <path d="M14 54 32 36 50 54" stroke="#37c6ff" stroke-width="6" opacity=".7"/>
+          </svg>
+        </div>
+        <svg class="badge" viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="#2f7bff" d="M12 1l2.4 2.1 3.1-.6.9 3 3 .9-.6 3.1L22.9 12l-2.1 2.4.6 3.1-3 .9-.9 3-3.1-.6L12 22.9l-2.4-2.1-3.1.6-.9-3-3-.9.6-3.1L1.1 12l2.1-2.4-.6-3.1 3-.9.9-3 3.1.6z"/>
+          <path d="M8.3 12.4l2.4 2.4 5-5" stroke="#fff" stroke-width="2.1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <h1 class="reveal">STEP <span class="up">UP</span><span class="arrow">↗</span></h1>
+
+      <p class="tagline reveal">
+        <span class="sr-only">Your future starts here — Code. Create. Lead. — من الفكرة إلى المشروع</span>
+        <span id="type" aria-hidden="true"></span>
+      </p>
+
+      <div class="pill reveal">
+        <span class="en">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 18h6"/><path d="M10 21h4"/>
+            <path d="M12 3a6 6 0 0 0-4 10.5c.8.7 1.3 1.5 1.5 2.5h5c.2-1 .7-1.8 1.5-2.5A6 6 0 0 0 12 3z"/>
+          </svg>
+          Computer Science &amp; Entrepreneurship
+        </span>
+        <span class="ar">نادي علوم الحاسوب وريادة الأعمال</span>
+      </div>
+
+      <section class="stats reveal" id="stats" aria-label="إحصائيات النادي">
+        <div class="stats-head"><i></i><span>CLUB IMPACT</span><span class="ar-h">أثر النادي</span><i></i></div>
+        <div class="stat-grid">
+          <article class="stat cyan" data-count="40">
+            <span class="s-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
+            <b class="num">0</b><span class="en">Workshops</span><span class="ar">ورشة</span>
+          </article>
+          <article class="stat blue" data-count="20">
+            <span class="s-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/><path d="M22 10v6"/></svg></span>
+            <b class="num">0</b><span class="en">Training Courses</span><span class="ar">دورة تكوينية</span>
+          </article>
+          <article class="stat violet" data-count="2">
+            <span class="s-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22v-7"/></svg></span>
+            <b class="num">0</b><span class="en">National Participations</span><span class="ar">مشاركة وطنية</span>
+          </article>
+          <article class="stat gold" data-count="1">
+            <span class="s-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v6a5 5 0 0 1-10 0V4z"/><path d="M7 6H4a2 2 0 0 0 0 4h3"/><path d="M17 6h3a2 2 0 0 1 0 4h-3"/></svg></span>
+            <b class="num">0</b><span class="en">International Win</span><span class="ar">فوز دولي</span>
+          </article>
+        </div>
+      </section>
+
+      <div class="socials reveal">
+        <a href="https://www.facebook.com/stepupclubsoukahras" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/stepupsoukahras" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://t.me/+aJLoz6MrpqZhZDQ0" target="_blank" rel="noopener" aria-label="Telegram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        </a>
+      </div>
+
+      <nav class="links" aria-label="روابط النادي">
+        <a class="link join reveal" href="https://docs.google.com/forms/d/e/1FAIpQLSfxEccOYfPbbdaCLCT3MHa97Lld5FX5ion2JgQJrSiWR5opYA/viewform" target="_blank" rel="noopener">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="4"/><path d="M2 21c0-4 3.5-6 7-6s7 2 7 6"/><path d="M19 8v6"/><path d="M22 11h-6"/></svg></span>
+          <span class="txt"><b>Join the Club 🌟</b><span>طلب الانضمام إلى النادي</span></span>
+          <span class="go">›</span>
+        </a>
+        <a class="link fb reveal" href="https://www.facebook.com/stepupclubsoukahras" target="_blank" rel="noopener">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></span>
+          <span class="txt"><b>Facebook</b><span>صفحة النادي الرسمية</span></span>
+          <span class="go">›</span>
+        </a>
+        <a class="link ig reveal" href="https://www.instagram.com/stepupsoukahras" target="_blank" rel="noopener">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1.1" fill="currentColor" stroke="none"/></svg></span>
+          <span class="txt"><b>Instagram</b><span>آخر الأنشطة والفعاليات</span></span>
+          <span class="go">›</span>
+        </a>
+        <a class="link tg reveal" href="https://t.me/+aJLoz6MrpqZhZDQ0" target="_blank" rel="noopener">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg></span>
+          <span class="txt"><b>Telegram Group</b><span>انضم إلى مجموعة النادي</span></span>
+          <span class="go">›</span>
+        </a>
+        <a class="link ad reveal" href="https://t.me/zakarialoumaizia" target="_blank" rel="noopener">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></span>
+          <span class="txt"><b>Contact Admin</b><span>تواصل مع إدارة النادي</span></span>
+          <span class="go">›</span>
+        </a>
+      </nav>
+
+      <footer class="reveal">
+        <div class="hash">#STEPUP_<span>CLUB</span></div>
+        <small>© <span id="year"></span> STEP UP Scientific Club · Souk Ahras</small>
+      </footer>
+    </main>
+  </div>
+
+<script>
+(function(){
+  "use strict";
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var sleep = function(ms){ return new Promise(function(r){ setTimeout(r, ms); }); };
+
+  var bg = document.getElementById("bg"), circuit = document.getElementById("circuit");
+  if(!reduced){
+    var tx=0, ty=0, cx=0, cy=0;
+    window.addEventListener("pointermove", function(e){
+      tx = (e.clientX / window.innerWidth - .5);
+      ty = (e.clientY / window.innerHeight - .5);
+    }, {passive:true});
+    (function loop(){
+      cx += (tx-cx)*.05; cy += (ty-cy)*.05;
+      var s = window.scrollY || 0;
+      bg.style.transform = "translate3d("+(cx*26)+"px,"+(cy*26 + s*.04)+"px,0)";
+      circuit.style.transform = "translate3d("+(cx*-14)+"px,"+(cy*-14)+"px,0)";
+      requestAnimationFrame(loop);
+    })();
+  }
+
+  var bootDone = true, revealed = false;
+
+  function revealCard(){
+    if(revealed) return; revealed = true;
+    var items = document.querySelectorAll(".reveal");
+    items.forEach(function(el,i){
+      setTimeout(function(){ el.classList.add("show"); }, reduced ? 0 : i*90);
+    });
+  }
+  var phrases = [
+    "YOUR FUTURE STARTS HERE",
+    "CODE. CREATE. LEAD.",
+    "من الفكرة إلى المشروع",
+    "BUILD · LEARN · LAUNCH"
+  ];
+  var typeEl = document.getElementById("type");
+  async function typewriter(){
+    if(reduced){ typeEl.textContent = phrases[0]; return; }
+    var p = 0;
+    while(true){
+      var text = phrases[p];
+      var isAr = /[\u0600-\u06FF]/.test(text);
+      typeEl.classList.toggle("ar", isAr);
+      typeEl.setAttribute("dir", isAr ? "rtl" : "ltr");
+      for(var i=1;i<=text.length;i++){ typeEl.textContent = text.slice(0,i); await sleep(isAr?70:55); }
+      await sleep(1700);
+      for(var j=text.length;j>=0;j--){ typeEl.textContent = text.slice(0,j); await sleep(26); }
+      await sleep(350);
+      p = (p+1) % phrases.length;
+    }
+  }
+
+  var statsSeen = false, statsStarted = false;
+  function ease(t){ return 1 - Math.pow(1-t, 4); }
+  function countUp(el, target, delay){
+    if(reduced){ el.textContent = target; return; }
+    setTimeout(function(){
+      var dur = 1600, t0 = performance.now();
+      (function tick(now){
+        var k = Math.min(1, (now-t0)/dur);
+        el.textContent = Math.round(ease(k)*target);
+        if(k<1) requestAnimationFrame(tick);
+      })(t0);
+    }, delay);
+  }
+  function maybeStats(){
+    if(statsStarted || !bootDone || !statsSeen) return;
+    statsStarted = true;
+    document.querySelectorAll(".stat").forEach(function(s,i){
+      countUp(s.querySelector(".num"), parseInt(s.dataset.count,10), i*140);
+    });
+  }
+  var statsEl = document.getElementById("stats");
+  if("IntersectionObserver" in window){
+    new IntersectionObserver(function(entries, obs){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ statsSeen = true; maybeStats(); obs.disconnect(); }
+      });
+    }, {threshold:.3}).observe(statsEl);
+  } else { statsSeen = true; }
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+  revealCard();
+  maybeStats();
+  typewriter();
+})();
+</script>
+</body>
+</html>
